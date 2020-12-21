@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-21T18:03:23+08:00</updated><id>http://localhost:4000/</id><title type="html">Hesai Lidar Wiki</title><subtitle>Knowledge base for Hesai Lidar</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">What is Cyber Security</title><link href="http://localhost:4000/cyber%20security/What-is-cyber-security/" rel="alternate" type="text/html" title="What is Cyber Security" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/cyber%20security/What%20is%20cyber%20security</id><content type="html" xml:base="http://localhost:4000/cyber%20security/What-is-cyber-security/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Sun noise</title><link href="http://localhost:4000/common%20issues/Sun-noise/" rel="alternate" type="text/html" title="Sun noise" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/common%20issues/Sun%20noise</id><content type="html" xml:base="http://localhost:4000/common%20issues/Sun-noise/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">SLAM basics</title><link href="http://localhost:4000/slam/SLAM-basics/" rel="alternate" type="text/html" title="SLAM basics" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/slam/SLAM%20basics</id><content type="html" xml:base="http://localhost:4000/slam/SLAM-basics/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Reflectivity mapping</title><link href="http://localhost:4000/lidar%20features/Reflectivity-mapping/" rel="alternate" type="text/html" title="Reflectivity mapping" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20features/Reflectivity%20mapping</id><content type="html" xml:base="http://localhost:4000/lidar%20features/Reflectivity-mapping/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">ROS SDK Troube Shooting</title><link href="http://localhost:4000/hesai%20ros%20sdk/ROS-SDK-Trouble-Shooting/" rel="alternate" type="text/html" title="ROS SDK Troube Shooting" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/hesai%20ros%20sdk/ROS%20SDK%20Trouble%20Shooting</id><content type="html" xml:base="http://localhost:4000/hesai%20ros%20sdk/ROS-SDK-Trouble-Shooting/">&lt;p&gt;Go to Our github site: https://github.com/Hesaitechonology/
+to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">Go to Our github site: https://github.com/Hesaitechonology/ to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Lidar reflectivity</title><link href="http://localhost:4000/lidar%20performance/Lidar-reflectivity/" rel="alternate" type="text/html" title="Lidar reflectivity" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20performance/Lidar%20reflectivity</id><content type="html" xml:base="http://localhost:4000/lidar%20performance/Lidar-reflectivity/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Lidar range accuracy</title><link href="http://localhost:4000/lidar%20performance/Lidar-range-accuracy/" rel="alternate" type="text/html" title="Lidar range accuracy" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20performance/Lidar%20range%20accuracy</id><content type="html" xml:base="http://localhost:4000/lidar%20performance/Lidar-range-accuracy/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Lidar Interference</title><link href="http://localhost:4000/common%20issues/Lidar-Interference/" rel="alternate" type="text/html" title="Lidar Interference" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/common%20issues/Lidar%20Interference</id><content type="html" xml:base="http://localhost:4000/common%20issues/Lidar-Interference/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Industrial application demo</title><link href="http://localhost:4000/lidar%20applications/Industrial-application-demo/" rel="alternate" type="text/html" title="Industrial application demo" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20applications/Industrial%20application%20demo</id><content type="html" xml:base="http://localhost:4000/lidar%20applications/Industrial-application-demo/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">How to find Lidar IP</title><link href="http://localhost:4000/trouble%20shooting/How-to-find-Lidar-IP/" rel="alternate" type="text/html" title="How to find Lidar IP" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/trouble%20shooting/How%20to%20find%20Lidar%20IP</id><content type="html" xml:base="http://localhost:4000/trouble%20shooting/How-to-find-Lidar-IP/">&lt;p&gt;to be updated…
+Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
+
+&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
+
+&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
+
+&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
+
+&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
+
+&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
+
+&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
+
+&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
+
+&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
+
+&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
+
+&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
+
+&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
+
+&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
+
+&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
+
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry></feed>
