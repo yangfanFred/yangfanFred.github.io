@@ -313,10 +313,11 @@ code, pre, tt {
     margin-top: 40px; }
   .tutorial .sidebar {
     display: none;
+    position: fixed;
     padding: 0 20px 0 0;
-    position: absolute;
-    top: 85px;
-    width: 200px; }
+    top: 200px;
+    width: 200px;
+    left: 50px; }
     @media (min-width: 750px) {
       .tutorial .sidebar {
         display: block; } }
@@ -335,13 +336,12 @@ code, pre, tt {
       -webkit-transition: transform .2s ease;
       line-height: 1.3em; }
       .tutorial .sidebar a.active {
-        color: #4A4A4A;
+        font-weight: bold;
+        color: #111010;
         transform: translateX(10px); }
   .tutorial .tutorial-content {
-    width: 100%; }
-    @media (min-width: 750px) {
-      .tutorial .tutorial-content {
-        margin-left: 230px; } }
+    width: 100%;
+    margin-left: 0px; }
 
 .listing {
   list-style: none;
@@ -393,6 +393,9 @@ code, pre, tt {
       font-size: .9em;
       line-height: 1.4em;
       width: 100%; }
+
+.tutorial-main {
+  position: relative; }
 
 .tutorial-share a {
   color: #666;
@@ -626,6 +629,12 @@ header {
 .wrapper {
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 30px;
+  position: relative; }
+
+.home_wrapper {
+  max-width: 1000px;
+  margin: 0 auto auto auto;
   padding: 0 30px;
   position: relative; }
 

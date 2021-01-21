@@ -18,15 +18,15 @@
 <meta name="generator" content="Jekyll v3.7.2" />
 <meta property="og:title" content="Drive multiple Lidars" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Steps about how to dirve multiple Lidars using ROS driver" />
-<meta property="og:description" content="Steps about how to dirve multiple Lidars using ROS driver" />
+<meta name="description" content="How to dirve multiple Lidars using ROS driver" />
+<meta property="og:description" content="How to dirve multiple Lidars using ROS driver" />
 <link rel="canonical" href="http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/" />
 <meta property="og:url" content="http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/" />
 <meta property="og:site_name" content="Hesai Lidar Wiki" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-01-15T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"Steps about how to dirve multiple Lidars using ROS driver","@type":"BlogPosting","url":"http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/","headline":"Drive multiple Lidars","dateModified":"2017-01-15T00:00:00+08:00","datePublished":"2017-01-15T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/"},"@context":"http://schema.org"}</script>
+{"description":"How to dirve multiple Lidars using ROS driver","@type":"BlogPosting","url":"http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/","headline":"Drive multiple Lidars","dateModified":"2017-01-15T00:00:00+08:00","datePublished":"2017-01-15T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 		<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Hesai Lidar Wiki" />
@@ -458,21 +458,28 @@ MC0xMi0xOVQwNDoxOTowNyswMDowMA5KhnYAAAAASUVORK5CYII=" />
 
 		</header>
 		<section class="content">
-			<div class="wrapper">
-				<section class="tutorial">
+			<div class="home_wrapper">
+				<meta name=”viewport” content=”width=device-width, initial-scale=1″ />
+<section class="tutorial">
 	<section class="sidebar sticky">
 		<ul>
 			
 			
-				<li><a href="#what-is-cloudcannon">What is CloudCannon?</a></li>
+				<li><a href="#1-clone-ros-driver">1. Clone ROS driver</a></li>
 			
-				<li><a href="#setup">Setup</a></li>
+				<li><a href="#2-configure-lidar">2. Configure Lidar</a></li>
 			
-				<li><a href="#editables">Editables</a></li>
+				<li><a href="#3-configure-ros-driver">3. Configure ROS driver</a></li>
 			
-				<li><a href="#client-access">Client Access</a></li>
+				<li><a href="#4-compile-ros-driver">4. Compile ROS driver</a></li>
 			
-				<li><a href="#the-client-workflow">The Client Workflow</a></li>
+				<li><a href="#5-launch-ros-driver">5. Launch ROS driver</a></li>
+			
+				<li><a href="#6-start-tf">6. Start TF</a></li>
+			
+				<li><a href="#8-trouble-shooting-tf">8. Trouble shooting: TF</a></li>
+			
+				<li><a href="#9-trouble-shooting-timestamp">9. Trouble shooting: Timestamp</a></li>
 			
 		</ul>
 	</section>
@@ -482,69 +489,112 @@ MC0xMi0xOVQwNDoxOTowNyswMDowMA5KhnYAAAAASUVORK5CYII=" />
 		
 		
 		<div class="tutorial-main">
-			<p>Go to Our github site: https://github.com/Hesaitechonology/
-to be updated…
-Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with <a href="https://cloudcannon.com">CloudCannon</a>.</p>
+			<p>In some applications, 2 or more Lidars are equipped, users will need to drive them together and view the point clouds in the same coordination system.
+Hesai’s General ROS driver project allows users to diver multiple Lidars. 
+In this paper, we will go through the process of how to driver multiple.</p>
 
-<h2 id="what-is-cloudcannon">What is CloudCannon?</h2>
+<p>Supported Lidar modules:</p>
 
-<p>CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.</p>
+<p><strong>PandarXT  PandarQT  Pandar64 Pandar40P</strong>  <br />
+<strong>Pandar20A Pandar20B Pandar40M</strong></p>
 
-<h2 id="setup">Setup</h2>
+<h2 id="1-clone-ros-driver">1. Clone ROS driver</h2>
 
-<p>To begin, we need to create a CloudCannon account and create our first site. Head over to <a href="https://cloudcannon.com">CloudCannon</a> and click the <em>Get Started Free</em> button:</p>
+<p>Go to our <a href="https://github.com/HesaiTechnology">Githubsite</a>  <br />
+Open the HesaiLidar_General_ROS project page, follow the instructions in readme file to download General ROS driver  <br />
+<img src="../../images/1.png" alt="avatar" /></p>
 
-<p>Enter your details into the sign up form:</p>
+<h2 id="2-configure-lidar">2. Configure Lidar</h2>
 
-<p>Once we’ve signed up we’re taken to our dashboard. Click <em>Create Site</em>:</p>
+<p>Connect Lidars to computer and configure Lidars to have different IP address and Destination Port
+As an example: Set one PandarXT Lidar to IP address 192. 168. 1. 201 , Destination port to 2368   <br />
+               and one Pandar64 Lidar to IP address 192. 168. 1. 202 , Destination port to 2369
+<img src="../../images/3.png" alt="avatar" /></p>
 
-<p>Enter a name for the site. I’m going to use the site from the <a href="/jekyll-casts/converting-a-static-site-to-jekyll/">Converting a static site to Jekyll</a> cast so I’ll call it <em>Creative</em>:</p>
+<h2 id="3-configure-ros-driver">3. Configure ROS driver</h2>
 
-<p>This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it <a href="https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip">here</a>.</p>
+<ul>
+  <li>Go to <code class="highlighter-rouge">src/HesaiLidar_General_ROS/launchfolder</code></li>
+  <li>Make copies of the original launch file “hesai_lidar.launch”</li>
+  <li>Rename the copies as your preference, each launch file for one Lidar
+  As an example: make 2 copies, name to “hesai_lidar_xt.launch” and “hesai_lidar_P64 .launch”</li>
+  <li>Edit launch file parameters according to the Lidar configuration, as an example:
+<img src="../../images/4.png" alt="avatar" /></li>
+</ul>
 
-<p>There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. <em>Note: folder upload is only supported in Chrome</em></p>
+<p>As can see from the launch file:</p>
 
-<p>Navigate to your Jekyll site and click <em>Upload</em>:</p>
+<ul>
+  <li>Set correct server_ip and lidar_recv_port(server_ip and lidar_recv_port should be different for each Lidar)</li>
+  <li>Set correctlidar_type for each Lidar launch file</li>
+  <li>Set special frame_id for each Lidar launch file (frame_id should be different)</li>
+  <li>Set special namespace for each Lidar(namespace should be different)</li>
+  <li>For other parameters, set them according to each Lidar’s configuration</li>
+</ul>
 
-<p>Once the files upload, CloudCannon builds the site:</p>
+<h2 id="4-compile-ros-driver">4. Compile ROS driver</h2>
+<p>After launch file created and edited, Compile the ROS driver:
+In <code class="highlighter-rouge">/rosworkspace</code> folder, open terminal and run:
+<code class="highlighter-rouge">catkin config –install</code><br />
+<code class="highlighter-rouge">catkin build –force-cmake</code></p>
 
-<p>We can view the live site by clicking on the <em>.cloudvent.net</em> URL in the sidebar:</p>
+<h2 id="5-launch-ros-driver">5. Launch ROS driver</h2>
 
-<h2 id="editables">Editables</h2>
+<p>After ROS driver compiled, open different terminal and launch ROS driver for each Lidar using their launch file:
+<code class="highlighter-rouge">source install/setup.bash</code><br />
+<code class="highlighter-rouge">roslaunch hesai_lidar xxx.launch</code>  <br />
+As an example, launch the ROS driver for Pandar64 and pandarXT- 32 in 2 terminals：
+<img src="../../images/5.png" alt="avatar" /></p>
 
-<p>Next, we need to do is to define areas in our HTML which non-developers can update. These are called <a href="https://docs.cloudcannon.com/editing/editable-regions/">Editable Regions</a> and are set by adding a class of <code class="highlighter-rouge">editable</code> to HTML elements.</p>
+<h2 id="6-start-tf">6. Start TF</h2>
+<p>About TF:
+TF is a ROS package that lets the user keep track of multiple coordinate frames over time. TF maintains the
+relationship between coordinate frames in a tree structure buffered in time, and let the user transform points, vectors,
+etc between any two coordinate frames at any desired point in time.</p>
 
-<p>Open <code class="highlighter-rouge">index.html</code> in CloudCannon and add a class of <code class="highlighter-rouge">editable</code> to the <code class="highlighter-rouge">h1</code> and <code class="highlighter-rouge">p</code> inside <code class="highlighter-rouge">&lt;div class="header-content-inner"&gt;</code> so it becomes the following:</p>
+<ul>
+  <li>
+    <p>Start tf transformation to transform the point clouds for multiple Lidars into the same coordination system:</p>
+  </li>
+  <li>
+    <p>As an example: shown on the pictures, start the transformation using matric 0 0 0 0 0 0 to transform toplidar(the frame_idof Pandar64) to frontlidar(the frame_idof PandarXT)
+<img src="../../images/6.png" alt="avatar" /></p>
+  </li>
+</ul>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header-content-inner"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"editable"</span><span class="nt">&gt;</span>Your Favorite Source of Free Bootstrap Themes<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;hr&gt;</span>
-  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"editable"</span><span class="nt">&gt;</span>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!<span class="nt">&lt;/p&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/about.html"</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-xl page-scroll"</span><span class="nt">&gt;</span>Find Out More<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/div&gt;</span>
-</code></pre></div></div>
+<h3 id="7-launch-rviz">7. Launch RVIZ</h3>
 
-<h2 id="client-access">Client Access</h2>
+<ul>
+  <li>Start RVIZ by command in terminal:  <code class="highlighter-rouge">rviz</code></li>
+  <li>Add Lidar point cloud topics</li>
+  <li>Set the Global Options: Fixed Frame to main lidar frame_id，as an example, set to <code class="highlighter-rouge">frontldiar</code></li>
+  <li>Since we started the transformation from <code class="highlighter-rouge">toplidar</code> to <code class="highlighter-rouge">frontlidar</code>, the point cloud of the 2 Lidars are shown on RVIZ  <br />
+<img src="../../images/7.png" alt="avatar" /></li>
+</ul>
 
-<p>Now the site is ready for our non-developer to update. We’ll set up <a href="https://docs.cloudcannon.com/sharing/client-sharing/">Client Sharing</a> which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.</p>
+<h2 id="8-trouble-shooting-tf">8. Trouble shooting: TF</h2>
+<p>When transformation not started correctly, you can only see one Lidar point clouds in RVIZ by setting Gloable Fixed Frame, there will be
+errors under the topics of other Lidar.  <br />
+<img src="../../images/8.png" alt="avatar" /></p>
 
-<p>Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add <code class="highlighter-rouge">/update</code> to the URL and enter the password we set earlier.</p>
+<p>How to solve:</p>
+<ul>
+  <li>close RVIZ, start transformation correctly and then relaunch RIVZ</li>
+</ul>
 
-<h2 id="the-client-workflow">The Client Workflow</h2>
+<h2 id="9-trouble-shooting-timestamp">9. Trouble shooting: Timestamp</h2>
 
-<p>Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:</p>
+<p>When two or more Lidars are publishing point cloud messages with different timestamp, RVIZ will not able to show 
+them together in the same time and there will be errors under topics of other Lidars.    <br />
+<img src="../../images/9.png" alt="avatar" /></p>
 
-<p>By clicking <em>Collections</em> in the sidebar the client can manage their blog posts:</p>
+<p>Howtosolve:</p>
+<ul>
+  <li>synchronize all Lidars using external clocksoure(GPS or PTP)</li>
+  <li>or set the timestamp_type in launch file to be “realtime”, in this way, point cloud messages will use ubuntu system
+time as timestamp so all Lidars can be synchronized</li>
+</ul>
 
-<p>Editing posts happens in the <a href="https://docs.cloudcannon.com/editing/content-editor/">Content Editor</a> which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:</p>
-
-<p>Or we can use the <a href="https://docs.cloudcannon.com/editing/visual-editor/">Visual Editor</a> to update posts:</p>
-
-<p>The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:</p>
-
-<p>If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.</p>
-
-<p>Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. <a href="https://app.cloudcannon.com/users/sign_up">Sign up free</a> and make your Jekyll site client editable.</p>
 
 		</div>
 		<div class="tutorial-share">
@@ -564,52 +614,6 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 </section>
 
 
-	
-	
-	
-	<div class="tutorial-series">
-		<h3> - Series</h3>
-		<p></p>
-
-		<ul class="listing">
-	
-		<li class="active">
-			<a href="/hesai%20ros%20sdk/Drive-multiple-Lidars/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>1. Drive multiple Lidars</h3>
-						<p class="description">Steps about how to dirve multiple Lidars using ROS driver</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/hesai%20ros%20sdk/Convert-PCAP-files-to-ROSBAG/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>2. Convert PCAP files to ROSBAG</h3>
-						<p class="description">Help users to convert PCAP files to ROSBAG files</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-</ul>
-	</div>
-
 
 
 
@@ -617,6 +621,40 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 		<h3>Related tutorials</h3>
 
 		<ul class="listing">
+	
+		<li >
+			<a href="/hesai%20ros%20sdk/Convert-PCAP-files-to-Rosbag/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>Convert PCAP files to ROSBAG</h3>
+						<p class="description">process of how to convert pcap files to rosbag</p>
+					</div>
+				</article>
+			</a>
+		</li>
+	
+		<li >
+			<a href="/hesai%20ros%20sdk/ROS-Driver-trouble-shooting/">
+				<div class="icon">
+		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+			<path d="M0 0h24v24H0z" fill="none"/>
+		</svg>
+</div>
+				<article>
+					<div>
+						<h3>ROS Driver trouble shooting</h3>
+						<p class="description">what to do when you got errors or crashes</p>
+					</div>
+				</article>
+			</a>
+		</li>
 	
 		<li >
 			<a href="/cyber%20security/What-is-cyber-security/">
@@ -687,23 +725,6 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 		</li>
 	
 		<li >
-			<a href="/hesai%20ros%20sdk/ROS-SDK-Trouble-Shooting/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>ROS SDK Troube Shooting</h3>
-						<p class="description">Help users debug ROS SDK related issues</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
 			<a href="/lidar%20performance/Lidar-reflectivity/">
 				<div class="icon">
 		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -766,23 +787,6 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 					<div>
 						<h3>Industrial application demo</h3>
 						<p class="description">A industiral application demo</p>
-					</div>
-				</article>
-			</a>
-		</li>
-	
-		<li >
-			<a href="/trouble%20shooting/How-to-find-Lidar-IP/">
-				<div class="icon">
-		<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-			<path d="M6 2c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
-			<path d="M0 0h24v24H0z" fill="none"/>
-		</svg>
-</div>
-				<article>
-					<div>
-						<h3>How to find Lidar IP</h3>
-						<p class="description">what to do when you forget about lidar ip settings</p>
 					</div>
 				</article>
 			</a>
@@ -916,7 +920,7 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 					</a></li>
 			
 		</ul>
-		<p class="copyright">&copy; Hesai Lidar Wiki 2020. All rights reserved.</p>
+		<p class="copyright">&copy; Hesai Lidar Wiki 2021. All rights reserved.</p>
 	</div>
 </footer>
 

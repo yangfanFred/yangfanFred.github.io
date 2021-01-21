@@ -1,4 +1,242 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-21T19:53:15+08:00</updated><id>http://localhost:4000/</id><title type="html">Hesai Lidar Wiki</title><subtitle>Knowledge base for Hesai Lidar</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">What is Cyber Security</title><link href="http://localhost:4000/cyber%20security/What-is-cyber-security/" rel="alternate" type="text/html" title="What is Cyber Security" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/cyber%20security/What%20is%20cyber%20security</id><content type="html" xml:base="http://localhost:4000/cyber%20security/What-is-cyber-security/">&lt;p&gt;to be updated…
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-21T15:25:52+08:00</updated><id>http://localhost:4000/</id><title type="html">Hesai Lidar Wiki</title><subtitle>Knowledge base for Hesai Lidar</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><entry><title type="html">Convert PCAP files to ROSBAG</title><link href="http://localhost:4000/hesai%20ros%20sdk/Convert-PCAP-files-to-Rosbag/" rel="alternate" type="text/html" title="Convert PCAP files to ROSBAG" /><published>2021-01-05T00:00:00+08:00</published><updated>2021-01-05T00:00:00+08:00</updated><id>http://localhost:4000/hesai%20ros%20sdk/Convert%20PCAP%20files%20to%20Rosbag</id><content type="html" xml:base="http://localhost:4000/hesai%20ros%20sdk/Convert-PCAP-files-to-Rosbag/">&lt;p&gt;Hesai provides the Pandarview Software to let our users easily record and replay the point cloud data sent from Lidar. Data are recorded and stored by PCAP file format by Pandarview.&lt;/p&gt;
+
+&lt;p&gt;In some cases, users will need to convert the PCAP file format to ROSBAG format to make a better use of the data in ROS system. In this paper, we will go through the process of how to convert HesaiLidar PCAP files to ROSBAG:&lt;/p&gt;
+
+&lt;h2 id=&quot;1-environment-setup&quot;&gt;1. Environment setup&lt;/h2&gt;
+
+&lt;p&gt;Requirements:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ubuntu PC: ROS system and HesaiLidar Ros driver installed&lt;/strong&gt;  &lt;br /&gt;
+for ROS driver, check our &lt;a href=&quot;https://github.com/HesaiTechnology&quot;&gt; Githubsite &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The recorded PCAP file&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The correction file of that Lidar&lt;/strong&gt;  &lt;br /&gt;
+Correction file can be found from the USB drive shipped with our product or can be exported by using our PandarView software&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-configure-ros-driver&quot;&gt;2. Configure ROS driver&lt;/h2&gt;
+
+&lt;p&gt;Check readme file of ROS driver and Edit the launch file:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Change “ pcap_file “ to the pcapfile path, eg:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;argname=&quot;pcap_file&quot; default=&quot;/home/hesai/Desktop/example/Pandar64.pcap&quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Change “ lidar_correction_file “ to the correction file path, eg:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;argname=&quot;lidar_correction_file&quot; default=&quot;/home/hesai/Desktop/example/Pandar64_correction.csv&quot;/&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Change “ lidar_type ” to the Lidar type, eg:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;argname=&quot;data_type&quot;default=&quot;Pandar64&quot;/&amp;gt;&lt;/code&gt;
+    &lt;h2 id=&quot;3-start-roscore-and-record-rosbag&quot;&gt;3. Start ROSCore and record ROSBAG&lt;/h2&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Open terminal and start roscoreby command:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;#sudo roscore&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Open another terminal and start rosbagrecord:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;#sudo rosbag record -b 4096 -a&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-launch-ros-driver-and-finish-recording&quot;&gt;4. Launch ROS driver and finish recording&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;In the “rosworkspace” folder of ROS driver, launch ROS driver by command:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;#roslaunch hesailidar hesai_lidar.launch&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The driver will process data in the PCAP file and publish point cloud
+messages to ROS system. Since we’ve started the ROSBAG record command,
+all the messages will be recorded. After all the data from PCAP file published to ROS system, ROS driver will stop printing messages.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Switch to the rosbag record teminal, press “Ctrl+C” to stop the recording.
+The converted ROSBAG file will be stored in the path of the rosbag record terminal. Thus you got the converted ROSBAG file from the PCAP file format&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">Hesai provides the Pandarview Software to let our users easily record and replay the point cloud data sent from Lidar. Data are recorded and stored by PCAP file format by Pandarview.</summary></entry><entry><title type="html">ROS Driver trouble shooting</title><link href="http://localhost:4000/hesai%20ros%20sdk/ROS-Driver-trouble-shooting/" rel="alternate" type="text/html" title="ROS Driver trouble shooting" /><published>2017-11-21T00:00:00+08:00</published><updated>2017-11-21T00:00:00+08:00</updated><id>http://localhost:4000/hesai%20ros%20sdk/ROS%20Driver%20trouble%20shooting</id><content type="html" xml:base="http://localhost:4000/hesai%20ros%20sdk/ROS-Driver-trouble-shooting/">&lt;p&gt;Hesai provides ROS driver for our users to easily drive our Lidars in ROS system. This paper covers most common issues users may face when they use ROS driver.  Arranged from the first compile step to the final application steps, reason and solution are provided for each case.&lt;/p&gt;
+
+&lt;h2 id=&quot;compile-issues&quot;&gt;Compile issues&lt;/h2&gt;
+&lt;h3 id=&quot;1-compile-error-caused-by-compiler-version-not-matching&quot;&gt;1. Compile error caused by compiler version not matching&lt;/h3&gt;
+&lt;p&gt;Usually you will see some C++ standard operator or grammar error:
+&lt;img src=&quot;../../images/trouble_shooting1.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: upgrade compiler to G++ 7 or above&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-compile-error-caused-by-required-library-missing&quot;&gt;2. Compile error caused by required library missing&lt;/h3&gt;
+&lt;p&gt;Usually you will see errors like libraries not found:
+&lt;img src=&quot;../../images/trouble_shooting2.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: search and install the missing libraries, in this case, the libyaml-cpp-dev library&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-compile-error-caused-by-incorrect-project-path&quot;&gt;3. Compile error caused by incorrect project path&lt;/h3&gt;
+&lt;p&gt;Usually you will see errors showing some project files not found:
+&lt;img src=&quot;../../images/trouble_shooting3.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: Arrange project files to be in correct path: rosworkspce/src/(all project source files)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;launch-issues&quot;&gt;Launch issues&lt;/h2&gt;
+&lt;h3 id=&quot;1-the-packet-size-mismatch-error-after-running-launch-command&quot;&gt;1. The “packet size mismatch” error after running launch command&lt;/h3&gt;
+&lt;p&gt;This error caused by the UDP packets ROS driver received are not matching the expected size from the launch file configuration, the packets can’t be processed.
+&lt;img src=&quot;../../images/trouble_shooting4.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: check every parameter in launch file, make sure they match the Lidar configuration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-the-process-has-died-error-driver-directly-stops-working&quot;&gt;2. The “Process has died” error, driver directly stops working&lt;/h3&gt;
+&lt;p&gt;This may related to un-matching launch fie configuration or there is a driver process already running in system.  &lt;br /&gt;
+&lt;img src=&quot;../../images/trouble_shooting5.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: Check every parameter in launch file, make sure they match the Lidar configuration and shutdown any other driver process or restart the system.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-no-error-but-no-point-cloud-published&quot;&gt;3. No error but no point cloud published&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Reason1: System not receiving data from Lidar&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: check if Lidar web setting page can be accessed then using wireshark software to check if system is receiving Lidar UDP packets check power and cable connection, check destination IP address setting. (If the Lidar IP address is lost, check our tutorial videos on how to find Lidar IP)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason2: ROS driver receiving port incorrect&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: check the setting of the parameters in launch file. “server_ip” should be set to the Lidar IP address and “lidar_recv_port” should be set to the Lidar destination port&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/trouble_shooting6.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reason3: ROS driver “start_angle”  not within FOV&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve:  Check “start_angle” parameter in launch file(default 0) and the FOV settings from “Azimuth FOV” Lidar web page, make sure “start_angle” set to within the FOV&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;application-issues&quot;&gt;Application issues&lt;/h2&gt;
+&lt;h3 id=&quot;1-abnormal-point-cloud&quot;&gt;1. Abnormal point cloud&lt;/h3&gt;
+&lt;p&gt;Correction file is used when calculate the coordinates of points. Each Lidar has its’ own correction files stores inside the Lidar. ROS driver will automatically load correction file from Lidar by command once launched. If loading failed, point coordinates might be inaccurate and point cloud published might be in a mess.&lt;br /&gt;
+&lt;img src=&quot;../../images/trouble_shooting7.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: Check the screen print after launching, see if “Parse Lidar correction Success!!!” printed. Make sure Lidar web page can be accessed, check and change  “server_ip” field in launch file to the correct Lidar IP address.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-incorrect-timestamp&quot;&gt;2. Incorrect timestamp&lt;/h3&gt;
+&lt;p&gt;The timestamp ROS driver published is the time from Lidar. If Lidar is not synchronized, the timestamp will be from the Lidar default time not real world time. Check Lidar synchronization status from web control home page.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to solve: check the external clock source device and the connection with Lidar, make sure the time synchronization status is “Locked”. Convert timestamp to UTC time, if it’s exactly hours difference with real time, that might be because the time zone setting not matching. You can set the time zone in ROS driver to match real time on your location. Modify the “tz” parameter in main.cc to be your location time zone: &lt;br /&gt;
+&lt;img src=&quot;../../images/trouble_shooting8.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../images/trouble_shooting9.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">Hesai provides ROS driver for our users to easily drive our Lidars in ROS system. This paper covers most common issues users may face when they use ROS driver. Arranged from the first compile step to the final application steps, reason and solution are provided for each case.</summary></entry><entry><title type="html">Drive multiple Lidars</title><link href="http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/" rel="alternate" type="text/html" title="Drive multiple Lidars" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/hesai%20ros%20sdk/Drive%20multiple%20Lidars</id><content type="html" xml:base="http://localhost:4000/hesai%20ros%20sdk/Drive-multiple-Lidars/">&lt;p&gt;In some applications, 2 or more Lidars are equipped, users will need to drive them together and view the point clouds in the same coordination system.
+Hesai’s General ROS driver project allows users to diver multiple Lidars. 
+In this paper, we will go through the process of how to driver multiple.&lt;/p&gt;
+
+&lt;p&gt;Supported Lidar modules:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;PandarXT  PandarQT  Pandar64 Pandar40P&lt;/strong&gt;  &lt;br /&gt;
+&lt;strong&gt;Pandar20A Pandar20B Pandar40M&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-clone-ros-driver&quot;&gt;1. Clone ROS driver&lt;/h2&gt;
+
+&lt;p&gt;Go to our &lt;a href=&quot;https://github.com/HesaiTechnology&quot;&gt;Githubsite&lt;/a&gt;  &lt;br /&gt;
+Open the HesaiLidar_General_ROS project page, follow the instructions in readme file to download General ROS driver  &lt;br /&gt;
+&lt;img src=&quot;../../images/1.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-configure-lidar&quot;&gt;2. Configure Lidar&lt;/h2&gt;
+
+&lt;p&gt;Connect Lidars to computer and configure Lidars to have different IP address and Destination Port
+As an example: Set one PandarXT Lidar to IP address 192. 168. 1. 201 , Destination port to 2368   &lt;br /&gt;
+               and one Pandar64 Lidar to IP address 192. 168. 1. 202 , Destination port to 2369
+&lt;img src=&quot;../../images/3.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;3-configure-ros-driver&quot;&gt;3. Configure ROS driver&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Go to &lt;code class=&quot;highlighter-rouge&quot;&gt;src/HesaiLidar_General_ROS/launchfolder&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Make copies of the original launch file “hesai_lidar.launch”&lt;/li&gt;
+  &lt;li&gt;Rename the copies as your preference, each launch file for one Lidar
+  As an example: make 2 copies, name to “hesai_lidar_xt.launch” and “hesai_lidar_P64 .launch”&lt;/li&gt;
+  &lt;li&gt;Edit launch file parameters according to the Lidar configuration, as an example:
+&lt;img src=&quot;../../images/4.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As can see from the launch file:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set correct server_ip and lidar_recv_port(server_ip and lidar_recv_port should be different for each Lidar)&lt;/li&gt;
+  &lt;li&gt;Set correctlidar_type for each Lidar launch file&lt;/li&gt;
+  &lt;li&gt;Set special frame_id for each Lidar launch file (frame_id should be different)&lt;/li&gt;
+  &lt;li&gt;Set special namespace for each Lidar(namespace should be different)&lt;/li&gt;
+  &lt;li&gt;For other parameters, set them according to each Lidar’s configuration&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;4-compile-ros-driver&quot;&gt;4. Compile ROS driver&lt;/h2&gt;
+&lt;p&gt;After launch file created and edited, Compile the ROS driver:
+In &lt;code class=&quot;highlighter-rouge&quot;&gt;/rosworkspace&lt;/code&gt; folder, open terminal and run:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;catkin config –install&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;catkin build –force-cmake&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;5-launch-ros-driver&quot;&gt;5. Launch ROS driver&lt;/h2&gt;
+
+&lt;p&gt;After ROS driver compiled, open different terminal and launch ROS driver for each Lidar using their launch file:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;source install/setup.bash&lt;/code&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;roslaunch hesai_lidar xxx.launch&lt;/code&gt;  &lt;br /&gt;
+As an example, launch the ROS driver for Pandar64 and pandarXT- 32 in 2 terminals：
+&lt;img src=&quot;../../images/5.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;6-start-tf&quot;&gt;6. Start TF&lt;/h2&gt;
+&lt;p&gt;About TF:
+TF is a ROS package that lets the user keep track of multiple coordinate frames over time. TF maintains the
+relationship between coordinate frames in a tree structure buffered in time, and let the user transform points, vectors,
+etc between any two coordinate frames at any desired point in time.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Start tf transformation to transform the point clouds for multiple Lidars into the same coordination system:&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;As an example: shown on the pictures, start the transformation using matric 0 0 0 0 0 0 to transform toplidar(the frame_idof Pandar64) to frontlidar(the frame_idof PandarXT)
+&lt;img src=&quot;../../images/6.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;7-launch-rviz&quot;&gt;7. Launch RVIZ&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Start RVIZ by command in terminal:  &lt;code class=&quot;highlighter-rouge&quot;&gt;rviz&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add Lidar point cloud topics&lt;/li&gt;
+  &lt;li&gt;Set the Global Options: Fixed Frame to main lidar frame_id，as an example, set to &lt;code class=&quot;highlighter-rouge&quot;&gt;frontldiar&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Since we started the transformation from &lt;code class=&quot;highlighter-rouge&quot;&gt;toplidar&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;frontlidar&lt;/code&gt;, the point cloud of the 2 Lidars are shown on RVIZ  &lt;br /&gt;
+&lt;img src=&quot;../../images/7.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;8-trouble-shooting-tf&quot;&gt;8. Trouble shooting: TF&lt;/h2&gt;
+&lt;p&gt;When transformation not started correctly, you can only see one Lidar point clouds in RVIZ by setting Gloable Fixed Frame, there will be
+errors under the topics of other Lidar.  &lt;br /&gt;
+&lt;img src=&quot;../../images/8.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;How to solve:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;close RVIZ, start transformation correctly and then relaunch RIVZ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;9-trouble-shooting-timestamp&quot;&gt;9. Trouble shooting: Timestamp&lt;/h2&gt;
+
+&lt;p&gt;When two or more Lidars are publishing point cloud messages with different timestamp, RVIZ will not able to show 
+them together in the same time and there will be errors under topics of other Lidars.    &lt;br /&gt;
+&lt;img src=&quot;../../images/9.png&quot; alt=&quot;avatar&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Howtosolve:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;synchronize all Lidars using external clocksoure(GPS or PTP)&lt;/li&gt;
+  &lt;li&gt;or set the timestamp_type in launch file to be “realtime”, in this way, point cloud messages will use ubuntu system
+time as timestamp so all Lidars can be synchronized&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">In some applications, 2 or more Lidars are equipped, users will need to drive them together and view the point clouds in the same coordination system. Hesai’s General ROS driver project allows users to diver multiple Lidars. In this paper, we will go through the process of how to driver multiple. Supported Lidar modules: PandarXT PandarQT Pandar64 Pandar40P Pandar20A Pandar20B Pandar40M</summary></entry><entry><title type="html">What is Cyber Security</title><link href="http://localhost:4000/cyber%20security/What-is-cyber-security/" rel="alternate" type="text/html" title="What is Cyber Security" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/cyber%20security/What%20is%20cyber%20security</id><content type="html" xml:base="http://localhost:4000/cyber%20security/What-is-cyber-security/">&lt;p&gt;to be updated…
 Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
@@ -242,69 +480,7 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 
 &lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
 
-&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">ROS SDK Troube Shooting</title><link href="http://localhost:4000/hesai%20ros%20sdk/ROS-SDK-Trouble-Shooting/" rel="alternate" type="text/html" title="ROS SDK Troube Shooting" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/hesai%20ros%20sdk/ROS%20SDK%20Trouble%20Shooting</id><content type="html" xml:base="http://localhost:4000/hesai%20ros%20sdk/ROS-SDK-Trouble-Shooting/">&lt;p&gt;Go to Our github site: https://github.com/Hesaitechonology/
-to be updated…
-Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
-
-&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
-
-&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
-
-&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
-
-&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
-
-&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
-
-&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
-
-&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
-
-&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
-
-&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
-
-&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
-
-&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
-
-&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
-
-&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
-
-&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
-
-&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
-
-&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
-
-&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
-
-&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">Go to Our github site: https://github.com/Hesaitechonology/ to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Lidar reflectivity</title><link href="http://localhost:4000/lidar%20performance/Lidar-reflectivity/" rel="alternate" type="text/html" title="Lidar reflectivity" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20performance/Lidar%20reflectivity</id><content type="html" xml:base="http://localhost:4000/lidar%20performance/Lidar-reflectivity/">&lt;p&gt;to be updated…
+&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Lidar reflectivity</title><link href="http://localhost:4000/lidar%20performance/Lidar-reflectivity/" rel="alternate" type="text/html" title="Lidar reflectivity" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20performance/Lidar%20reflectivity</id><content type="html" xml:base="http://localhost:4000/lidar%20performance/Lidar-reflectivity/">&lt;p&gt;to be updated…
 Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
@@ -427,128 +603,6 @@ Many people don’t use Jekyll for client projects as non-developers would tradi
 &lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
 
 &lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Lidar Interference</title><link href="http://localhost:4000/common%20issues/Lidar-Interference/" rel="alternate" type="text/html" title="Lidar Interference" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/common%20issues/Lidar%20Interference</id><content type="html" xml:base="http://localhost:4000/common%20issues/Lidar-Interference/">&lt;p&gt;to be updated…
-Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
-
-&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
-
-&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
-
-&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
-
-&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
-
-&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
-
-&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
-
-&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
-
-&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
-
-&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
-
-&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
-
-&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
-
-&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
-
-&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
-
-&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
-
-&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
-
-&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
-
-&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
-
-&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">Industrial application demo</title><link href="http://localhost:4000/lidar%20applications/Industrial-application-demo/" rel="alternate" type="text/html" title="Industrial application demo" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/lidar%20applications/Industrial%20application%20demo</id><content type="html" xml:base="http://localhost:4000/lidar%20applications/Industrial-application-demo/">&lt;p&gt;to be updated…
-Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
-
-&lt;p&gt;CloudCannon is cloud content management system and hosting provider for Jekyll websites. A developer uploads a Jekyll site in the browser or by syncing with GitHub, Bitbucket or Dropbox. CloudCannon then builds the site, hosts it and provides an interface for non-technical users to update content.&lt;/p&gt;
-
-&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
-
-&lt;p&gt;To begin, we need to create a CloudCannon account and create our first site. Head over to &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt; and click the &lt;em&gt;Get Started Free&lt;/em&gt; button:&lt;/p&gt;
-
-&lt;p&gt;Enter your details into the sign up form:&lt;/p&gt;
-
-&lt;p&gt;Once we’ve signed up we’re taken to our dashboard. Click &lt;em&gt;Create Site&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Enter a name for the site. I’m going to use the site from the &lt;a href=&quot;/jekyll-casts/converting-a-static-site-to-jekyll/&quot;&gt;Converting a static site to Jekyll&lt;/a&gt; cast so I’ll call it &lt;em&gt;Creative&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;This creates the site and gives us options for uploading our files. If you’d like to use the same site I’m using you can download it &lt;a href=&quot;https://github.com/CloudCannon/creative-jekyll-theme/archive/master.zip&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;There’s a number of ways of getting your files on CloudCannon. To keep things simple we’re just going to upload a folder from our local computer. Click on the folder icon. &lt;em&gt;Note: folder upload is only supported in Chrome&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Navigate to your Jekyll site and click &lt;em&gt;Upload&lt;/em&gt;:&lt;/p&gt;
-
-&lt;p&gt;Once the files upload, CloudCannon builds the site:&lt;/p&gt;
-
-&lt;p&gt;We can view the live site by clicking on the &lt;em&gt;.cloudvent.net&lt;/em&gt; URL in the sidebar:&lt;/p&gt;
-
-&lt;h2 id=&quot;editables&quot;&gt;Editables&lt;/h2&gt;
-
-&lt;p&gt;Next, we need to do is to define areas in our HTML which non-developers can update. These are called &lt;a href=&quot;https://docs.cloudcannon.com/editing/editable-regions/&quot;&gt;Editable Regions&lt;/a&gt; and are set by adding a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to HTML elements.&lt;/p&gt;
-
-&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; in CloudCannon and add a class of &lt;code class=&quot;highlighter-rouge&quot;&gt;editable&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;h1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;p&lt;/code&gt; inside &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div class=&quot;header-content-inner&quot;&amp;gt;&lt;/code&gt; so it becomes the following:&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;header-content-inner&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Your Favorite Source of Free Bootstrap Themes&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;hr&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;editable&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/about.html&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;btn btn-primary btn-xl page-scroll&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Find Out More&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;client-access&quot;&gt;Client Access&lt;/h2&gt;
-
-&lt;p&gt;Now the site is ready for our non-developer to update. We’ll set up &lt;a href=&quot;https://docs.cloudcannon.com/sharing/client-sharing/&quot;&gt;Client Sharing&lt;/a&gt; which allows our client to update their site without having to create an account. Go to the Site Settings / Client Sharing section and set a password for your client.&lt;/p&gt;
-
-&lt;p&gt;Our non-developer can view their live site at your-site.cloudvent.net (or you can set up a custom domain). To update their site they just add &lt;code class=&quot;highlighter-rouge&quot;&gt;/update&lt;/code&gt; to the URL and enter the password we set earlier.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-client-workflow&quot;&gt;The Client Workflow&lt;/h2&gt;
-
-&lt;p&gt;Once the client logs in they see their site with colored boxes highlighting the editable regions. The client can update content directly inline by clicking on text:&lt;/p&gt;
-
-&lt;p&gt;By clicking &lt;em&gt;Collections&lt;/em&gt; in the sidebar the client can manage their blog posts:&lt;/p&gt;
-
-&lt;p&gt;Editing posts happens in the &lt;a href=&quot;https://docs.cloudcannon.com/editing/content-editor/&quot;&gt;Content Editor&lt;/a&gt; which is a rich text editor for Markdown. The client can also manage all the front matter data on the page using an easy-to-use editor:&lt;/p&gt;
-
-&lt;p&gt;Or we can use the &lt;a href=&quot;https://docs.cloudcannon.com/editing/visual-editor/&quot;&gt;Visual Editor&lt;/a&gt; to update posts:&lt;/p&gt;
-
-&lt;p&gt;The client can also update collection items using the same editor. In this example there’s no body content and only front matter so we’ve made the front matter editor full screen:&lt;/p&gt;
-
-&lt;p&gt;If we have GitHub, Bitbucket or Dropbox connected to the site, all changes the client makes are pushed back to the storage provider.&lt;/p&gt;
-
-&lt;p&gt;Now the client can update all the content and hasn’t had to learn HTML, Liquid or Markdown. This gives a small taste of what you can achieve on CloudCannon. &lt;a href=&quot;https://app.cloudcannon.com/users/sign_up&quot;&gt;Sign up free&lt;/a&gt; and make your Jekyll site client editable.&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil}</name></author><summary type="html">to be updated… Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with CloudCannon.</summary></entry><entry><title type="html">How to find Lidar IP</title><link href="http://localhost:4000/trouble%20shooting/How-to-find-Lidar-IP/" rel="alternate" type="text/html" title="How to find Lidar IP" /><published>2017-01-15T00:00:00+08:00</published><updated>2017-01-15T00:00:00+08:00</updated><id>http://localhost:4000/trouble%20shooting/How%20to%20find%20Lidar%20IP</id><content type="html" xml:base="http://localhost:4000/trouble%20shooting/How-to-find-Lidar-IP/">&lt;p&gt;to be updated…
 Many people don’t use Jekyll for client projects as non-developers would traditionally have to learn HTML, Markdown and Liquid to update content. In this tutorial, we give non-developers an easy way to update Jekyll sites with &lt;a href=&quot;https://cloudcannon.com&quot;&gt;CloudCannon&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;what-is-cloudcannon&quot;&gt;What is CloudCannon?&lt;/h2&gt;
